@@ -16,6 +16,7 @@ public class TurtleTreasureHunt implements KeyListener, KeyEventDispatcher {
 
 	int tortoiseSpeed = 5;
 
+
 	private void goUp() {
 		// 1. Make the tortoise move up the screen
 			Tortoise.move(tortoiseSpeed);
@@ -24,7 +25,7 @@ public class TurtleTreasureHunt implements KeyListener, KeyEventDispatcher {
 
 	private void goDown() {
 		// 2. make the tortoise move down the screen
-Tortoise.move(-10);
+Tortoise.move(-5);
 	}
 
 	private void goLeft() {
@@ -32,7 +33,7 @@ Tortoise.move(-10);
 		// Hint: the turn() method lags more than setAngle()
 
 		Tortoise.turn(-90);
-		Tortoise.move(10);
+		Tortoise.move(5);
 		Tortoise.turn(90);
 	
 	}
@@ -40,7 +41,7 @@ Tortoise.move(-10);
 	private void goRight() {
 		// 4. make the tortoise move right
 		Tortoise.turn(90);
-		Tortoise.move(10);
+		Tortoise.move(5);
 		Tortoise.turn(-90);
 	}
 
@@ -49,6 +50,7 @@ Tortoise.move(-10);
 		int tortoiseLocationY = Tortoise.getY();
 
 		// 5. Print out the variables for tortoiseLocationX and tortoiseLocationY
+
 System.out.println( "x"+ tortoiseLocationX);
 System.out.println("y"+ tortoiseLocationY);
 		// 6. If tortoise is at same location as the little girl,
@@ -62,7 +64,7 @@ if(tortoiseLocationX==500 && tortoiseLocationY==300){
 		// (pirate robot, swamp, parrots, etc.)
 
 	if(tortoiseLocationX==140 && tortoiseLocationY==290){
-		JOptionPane.showMessageDialog(null, "I swallowed the key and it is giving me a stomach ache. Press the space key to help me get it out.  ");}
+		JOptionPane.showMessageDialog(null, "I swallowed the key and it is giving me a stomach ache. Press the s key to help me get it out.  ");}
 		
 		
 		
@@ -104,7 +106,7 @@ if(tortoiseLocationX==500 && tortoiseLocationY==300){
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		 
+		 System.out.println("I pressed the "+ e.getKeyCode() + " key");
 			if (e.getKeyCode() == KeyEvent.VK_RIGHT)
 				goRight();
 			else if (e.getKeyCode() == KeyEvent.VK_LEFT)
@@ -115,9 +117,9 @@ if(tortoiseLocationX==500 && tortoiseLocationY==300){
 				goDown();
 			else if (e.getKeyCode() == KeyEvent.VK_SPACE)
 				spaceBarWasPressed();
-			if (e.getKeyCode() == KeyEvent.VK_S)
+			else if (e.getKeyCode() == KeyEvent.VK_S)
 				sKeyWasPressed();
-			if (e.getKeyCode() == KeyEvent.VK_U)
+			else if (e.getKeyCode() == KeyEvent.VK_U)
 				uKeyWasPressed();
 			}
 	
@@ -125,7 +127,8 @@ if(tortoiseLocationX==500 && tortoiseLocationY==300){
 	private void uKeyWasPressed() {
 		int tortoiseLocationX = Tortoise.getX();
 		int tortoiseLocationY = Tortoise.getY();
-if (tortoiseLocationX==500 && tortoiseLocationY==300){
+		System.out.println("The u key was pressed");
+if ((tortoiseLocationX>470 && tortoiseLocationX<480) && (tortoiseLocationY>175 && tortoiseLocationY<185)){
 JOptionPane.showMessageDialog(null, "You have unlocked the girl!");
 }
 	}
@@ -140,7 +143,7 @@ JOptionPane.showMessageDialog(null, "You have unlocked the girl!");
 		JOptionPane.showMessageDialog(null, "Okay. It is out of my body now, but I don't know where it went. I am pretty sure it is inside the cannon.");
 	
 	}
-	
+		
 
 	@Override
 	public void keyReleased(KeyEvent e) {
